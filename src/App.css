@@ -9,55 +9,121 @@ body {
   line-height: 1.6; /* Improved readability */
 }
 
-/* Header Styles */
-.header {
-  background-color: #333;
-  padding: 15px 20px;
-  color: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  position: sticky; /* Makes header stick to top */
-  top: 0;
-  z-index: 1000; /* Ensures header is above other content */
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* Common Container Style */
+.container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 20px; /* Default padding for all containers */
 }
 
-.logo {
-  color: white;
-  text-decoration: none;
-  font-size: 1.8em;
-  font-weight: bold;
+/* --- HEADER & NAVIGATION STYLES --- */
+.header {
+  background-color: #333; /* Dark background for the header */
+  color: white; /* White text color */
+  padding: 1rem 0; /* Padding above and below the content */
+  position: fixed; /* Keep header fixed at the top - THIS CAUSES OVERLAP IF NOT HANDLED */
+  width: 100%; /* Full width */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Ensure header is on top of other content */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow for depth */
 }
 
-.nav-links {
-  list-style: none;
+.header-content { /* This now replaces your .navbar for flex management */
+  display: flex;
+  justify-content: space-between; /* Space out logo and nav links/toggle */
+  align-items: center; /* Vertically align items */
+  padding: 0 20px; /* Padding on the left and right */
+  max-width: 1200px; /* Max width for container */
+  margin: 0 auto; /* Center the container */
+}
+
+.logo h1 { /* Targeting the h1 inside .logo */
+  font-size: 1.8rem;
+  margin: 0;
+  color: #fff;
+}
+
+/* Desktop Navigation Links (className="main-nav" in Header.jsx) */
+.main-nav .nav-links {
+  list-style: none; /* Remove bullet points */
   margin: 0;
   padding: 0;
-  display: flex;
+  display: flex; /* Display links horizontally */
 }
 
-.nav-links li {
-  margin-left: 20px;
+.main-nav .nav-links li {
+  margin-left: 25px; /* Spacing between desktop links */
 }
 
-.nav-links a {
+.main-nav .nav-links a {
   color: white;
   text-decoration: none;
-  font-size: 1.1em;
+  font-weight: 500;
+  transition: color 0.3s ease; /* Smooth hover effect */
+}
+
+.main-nav .nav-links a:hover {
+  color: #00bcd4; /* Your accent color for hover */
+}
+
+/* Hamburger Menu Toggle Button (className="menu-toggle" in Header.jsx) */
+.menu-toggle {
+  display: none; /* Hidden by default on desktop */
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem; /* Size of the hamburger icon */
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001; /* Ensure it's above other elements if menu is open */
+}
+
+/* Mobile Navigation Overlay (className="mobile-nav" in Header.jsx) */
+.mobile-nav {
+  position: fixed; /* Position over the entire screen */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent dark overlay */
+  display: flex;
+  justify-content: center; /* Center links horizontally */
+  align-items: center; /* Center links vertically */
+  z-index: 999; /* Below header, but above page content */
+  animation: fadeIn 0.3s ease-out; /* Simple fade-in effect */
+}
+
+.mobile-nav-links {
+  list-style: none;
+  padding: 0;
+  text-align: center; /* Center the text of the links */
+}
+
+.mobile-nav-links li {
+  margin: 30px 0; /* Spacing between mobile menu links */
+}
+
+.mobile-nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 2rem; /* Larger font size for mobile links */
+  font-weight: 600;
   transition: color 0.3s ease;
 }
 
-.nav-links a:hover {
-  color: #00bcd4;
+.mobile-nav-links a:hover {
+  color: #00bcd4; /* Your accent color for hover */
 }
 
-/* Common Button Styles */
+/* Keyframe animation for mobile menu fade-in */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+/* --- Common Button Styles --- */
 .btn {
   display: inline-block;
   padding: 15px 30px;
@@ -94,10 +160,11 @@ body {
   box-shadow: 0 4px 10px rgba(0, 188, 212, 0.3);
 }
 
-/* Main Content Area */
-main 
+/* --- Main Content Area Placeholder --- */
+/* Your 'main' tag was empty, so I removed it, or you can add styles here if needed. */
+/* main {} */
 
-/* Footer Styles */
+/* --- Footer Styles --- */
 footer {
   text-align: center;
   padding: 20px;
@@ -107,7 +174,7 @@ footer {
   font-size: 0.9em;
 }
 
-/* Section Common Styles (for about, skills, projects, contact) */
+/* --- Section Common Styles (for about, skills, projects, contact) --- */
 .section-title {
   font-size: 2.8em;
   color: #333;
@@ -129,21 +196,18 @@ footer {
   border-radius: 2px;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
 
-/* Hero Section Styles */
+/* --- Hero Section Styles --- */
 .hero-section {
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px); /* Adjust based on actual header height */
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   background-color: #f8f8f8;
-  padding: 60px 20px;
+  padding: 60px 20px; /* Default padding */
+  /* FIX FOR HEADER OVERLAP */
+  padding-top: 5rem; /* Pushes content down below the fixed header (approx 80px) */
 }
 
 .hero-content {
@@ -151,7 +215,7 @@ footer {
   margin: 0 auto;
 }
 
-.hi-there { /* Renamed from .hero-greeting for clarity with JSX */
+.hi-there {
   font-size: 1.5em;
   color: #555;
   margin-bottom: 5px;
@@ -185,7 +249,7 @@ footer {
   flex-wrap: wrap;
 }
 
-/* About Section Styles */
+/* --- About Section Styles --- */
 .about-section {
   padding: 80px 0;
   background-color: white;
@@ -211,7 +275,7 @@ footer {
   margin-bottom: 20px;
 }
 
-/* Skills Section Styles */
+/* --- Skills Section Styles --- */
 .skills-section {
   padding: 80px 0;
   background-color: #f8f8f8;
@@ -224,7 +288,7 @@ footer {
   margin-top: 40px;
 }
 
-.skill-card { /* Renamed from .skill-category for clarity with JSX */
+.skill-card {
   background-color: white;
   padding: 30px;
   border-radius: 8px;
@@ -238,7 +302,7 @@ footer {
   box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
-.skill-card h3 { /* Using h3 for category title */
+.skill-card h3 {
   font-size: 1.6em;
   color: #00bcd4;
   margin-top: 0;
@@ -259,13 +323,13 @@ footer {
   border-radius: 2px;
 }
 
-.skill-card ul { /* Changed from .skill-list */
+.skill-card ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.skill-card li { /* Changed from .skill-item */
+.skill-card li {
   font-size: 1.1em;
   color: #555;
   padding: 8px 0;
@@ -288,7 +352,7 @@ footer {
   margin-left: -1em;
 }
 
-/* Projects Section Styles */
+/* --- Projects Section Styles --- */
 .projects-section {
   padding: 80px 0;
   background-color: white;
@@ -377,7 +441,7 @@ footer {
   transition: all 0.3s ease;
 }
 
-/* Contact Section Styles */
+/* --- Contact Section Styles --- */
 .contact-section {
   padding: 80px 0;
   background-color: #f8f8f8;
@@ -511,33 +575,29 @@ footer {
   box-shadow: 0 4px 10px rgba(0, 188, 212, 0.3);
 }
 
-/* Media Queries for Responsiveness */
+/* --- MEDIA QUERIES FOR RESPONSIVENESS --- */
+
+/* Styles that apply when screen width is 768px or less */
 @media (max-width: 768px) {
-  /* Header */
-  .header {
-    padding: 10px 15px;
+  /* Header & Mobile Nav */
+  .main-nav { /* This is the desktop nav */
+    display: none; /* Hide the desktop navigation */
   }
-  .navbar {
-    flex-direction: column; /* Stack logo and nav links */
-    text-align: center;
+
+  .menu-toggle { /* This is the hamburger icon */
+    display: block; /* Show the hamburger icon */
   }
-  .logo {
-    margin-bottom: 15px;
-  }
-  .nav-links {
-    flex-direction: column; /* Stack nav items */
-  }
-  .nav-links li {
-    margin: 0 0 10px 0; /* Space between stacked links */
-  }
-  .nav-links a {
-    padding: 5px 0;
+
+  .header-content {
+    /* Existing padding: 0 20px; remains, but you might want to adjust */
+    padding: 0 15px; /* Slightly less padding on smaller screens */
   }
 
   /* Hero Section */
   .hero-section {
-    padding: 40px 20px;
+    padding: 40px 20px; /* Adjust top/bottom padding */
     min-height: auto; /* Allow height to adjust */
+    padding-top: 5rem; /* Ensure space for fixed header on mobile too */
   }
   .hero-name {
     font-size: 3em;
@@ -549,12 +609,12 @@ footer {
     font-size: 1em;
   }
   .hero-buttons {
-    flex-direction: column;
+    flex-direction: column; /* Stack buttons vertically */
     gap: 15px;
   }
-  .btn {
-    width: 80%;
-    margin: 0 auto;
+  .btn { /* General button adjustments for mobile */
+    width: 80%; /* Make buttons take up more width */
+    margin: 0 auto; /* Center them */
   }
 
   /* Section Common */
@@ -568,11 +628,11 @@ footer {
     padding: 50px 0;
   }
   .about-content {
-    flex-direction: column;
+    flex-direction: column; /* Stack content vertically */
     text-align: center;
   }
   .about-text {
-    min-width: unset;
+    min-width: unset; /* Remove min-width restriction */
     width: 100%;
   }
 
@@ -581,7 +641,7 @@ footer {
     padding: 50px 0;
   }
   .skills-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Stack skill cards */
   }
 
   /* Projects Section */
@@ -589,7 +649,7 @@ footer {
     padding: 50px 0;
   }
   .projects-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Stack project cards */
   }
   .project-btn { /* Ensure project buttons also adjust on mobile */
     width: 80%;
@@ -601,144 +661,15 @@ footer {
     padding: 50px 0;
   }
   .contact-content {
-    flex-direction: column;
+    flex-direction: column; /* Stack form and info vertically */
   }
   .contact-form, .contact-info {
     min-width: unset;
     width: 100%;
-    padding: 30px;
+    padding: 30px; /* Slightly less padding inside */
   }
   .contact-info h3 {
-    text-align: center;
-  }
-}
-/* src/App.css */
-
-/* --- Header & Navigation Base Styles (adjust as needed if you have existing ones) --- */
-.header {
-  background-color: #333; /* Dark background for the header */
-  color: white; /* White text color */
-  padding: 1rem 0; /* Padding above and below the content */
-  position: fixed; /* Keep header fixed at the top */
-  width: 100%; /* Full width */
-  top: 0;
-  left: 0;
-  z-index: 1000; /* Ensure header is on top of other content */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow for depth */
-}
-
-.header-content {
-  display: flex;
-  justify-content: space-between; /* Space out logo and nav links */
-  align-items: center; /* Vertically align items */
-  padding: 0 20px; /* Padding on the left and right */
-  max-width: 1200px; /* Max width for container */
-  margin: 0 auto; /* Center the container */
-}
-
-.logo h1 {
-  font-size: 1.8rem;
-  margin: 0;
-  color: #fff;
-}
-
-/* Desktop Navigation Links */
-.main-nav .nav-links {
-  list-style: none; /* Remove bullet points */
-  margin: 0;
-  padding: 0;
-  display: flex; /* Display links horizontally */
-}
-
-.main-nav .nav-links li {
-  margin-left: 25px; /* Spacing between desktop links */
-}
-
-.main-nav .nav-links a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease; /* Smooth hover effect */
-}
-
-.main-nav .nav-links a:hover {
-  color: #00bcd4; /* Your accent color for hover */
-}
-
-
-/* --- MOBILE NAVIGATION SPECIFIC STYLES --- */
-
-/* Initially hide the hamburger menu toggle button on desktop */
-.menu-toggle {
-  display: none; /* Hidden by default */
-  background: none;
-  border: none;
-  color: white;
-  font-size: 2rem; /* Size of the hamburger icon */
-  cursor: pointer;
-  padding: 0;
-  z-index: 1001; /* Ensure it's above other elements if menu is open */
-}
-
-/* Mobile navigation overlay */
-.mobile-nav {
-  position: fixed; /* Position over the entire screen */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent dark overlay */
-  display: flex;
-  justify-content: center; /* Center links horizontally */
-  align-items: center; /* Center links vertically */
-  z-index: 999; /* Below header, but above page content */
-  animation: fadeIn 0.3s ease-out; /* Simple fade-in effect */
-}
-
-.mobile-nav-links {
-  list-style: none;
-  padding: 0;
-  text-align: center; /* Center the text of the links */
-}
-
-.mobile-nav-links li {
-  margin: 30px 0; /* Spacing between mobile menu links */
-}
-
-.mobile-nav-links a {
-  color: white;
-  text-decoration: none;
-  font-size: 2rem; /* Larger font size for mobile links */
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
-
-.mobile-nav-links a:hover {
-  color: #00bcd4; /* Your accent color for hover */
-}
-
-/* Keyframe animation for mobile menu fade-in */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-
-/* --- MEDIA QUERIES --- */
-
-/* Styles that apply when screen width is 768px or less */
-@media (max-width: 768px) {
-  .main-nav {
-    display: none; /* Hide the desktop navigation */
-  }
-
-  .menu-toggle {
-    display: block; /* Show the hamburger icon */
-  }
-
-  /* Adjust padding for header content on smaller screens */
-  .header-content {
-    padding: 0 15px;
+    text-align: center; /* Center contact details title */
   }
 }
 
