@@ -7,6 +7,8 @@ body {
   background-color: #f4f4f4;
   color: #333;
   line-height: 1.6; /* Improved readability */
+  -webkit-font-smoothing: antialiased; /* For smoother font rendering */
+  -moz-osx-font-smoothing: grayscale; /* For smoother font rendering */
 }
 
 /* Common Container Style */
@@ -21,7 +23,7 @@ body {
   background-color: #333; /* Dark background for the header */
   color: white; /* White text color */
   padding: 1rem 0; /* Padding above and below the content */
-  position: fixed; /* Keep header fixed at the top - THIS CAUSES OVERLAP IF NOT HANDLED */
+  position: fixed; /* Keep header fixed at the top */
   width: 100%; /* Full width */
   top: 0;
   left: 0;
@@ -160,9 +162,7 @@ body {
   box-shadow: 0 4px 10px rgba(0, 188, 212, 0.3);
 }
 
-/* --- Main Content Area Placeholder --- */
-/* Your 'main' tag was empty, so I removed it, or you can add styles here if needed. */
-/* main {} */
+/* --- Main Content Area Placeholder (removed unnecessary empty main tag) --- */
 
 /* --- Footer Styles --- */
 footer {
@@ -199,14 +199,15 @@ footer {
 
 /* --- Hero Section Styles --- */
 .hero-section {
-  min-height: calc(100vh - 80px); /* Adjust based on actual header height */
+  min-height: 100vh; /* Make hero section at least full viewport height */
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   background-color: #f8f8f8;
   padding: 60px 20px; /* Default padding */
-  /* FIX FOR HEADER OVERLAP */
+  box-sizing: border-box; /* Include padding in element's total width and height */
+  /* FIX FOR HEADER OVERLAP: This crucial line ensures content starts below fixed header */
   padding-top: 5rem; /* Pushes content down below the fixed header (approx 80px) */
 }
 
@@ -246,7 +247,7 @@ footer {
   display: flex;
   justify-content: center;
   gap: 20px;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Allow buttons to wrap to next line on smaller screens */
 }
 
 /* --- About Section Styles --- */
@@ -257,15 +258,15 @@ footer {
 
 .about-content {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Allow items to wrap for responsiveness */
   gap: 40px;
   justify-content: center;
   align-items: center;
 }
 
 .about-text {
-  flex: 2;
-  min-width: 300px;
+  flex: 2; /* Takes 2 parts of available space */
+  min-width: 300px; /* Ensures it doesn't get too small before wrapping */
   line-height: 1.8;
   font-size: 1.1em;
   color: #555;
@@ -283,7 +284,7 @@ footer {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid columns */
   gap: 30px;
   margin-top: 40px;
 }
@@ -360,7 +361,7 @@ footer {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid columns */
   gap: 30px;
   margin-top: 40px;
 }
@@ -389,7 +390,7 @@ footer {
 
 .project-info {
   padding: 25px;
-  flex-grow: 1;
+  flex-grow: 1; /* Allows info to take available space */
   display: flex;
   flex-direction: column;
 }
@@ -406,7 +407,7 @@ footer {
   color: #666;
   line-height: 1.6;
   margin-bottom: 20px;
-  flex-grow: 1;
+  flex-grow: 1; /* Allows description to take available space */
 }
 
 .project-techs {
@@ -426,10 +427,10 @@ footer {
 }
 
 .project-links {
-  margin-top: auto;
+  margin-top: auto; /* Pushes links to the bottom of the card */
   display: flex;
   gap: 15px;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Allow buttons to wrap */
 }
 
 .project-btn {
@@ -451,20 +452,20 @@ footer {
   text-align: center;
   font-size: 1.2em;
   color: #555;
-  margin-top: -30px;
+  margin-top: -30px; /* Adjust as per your layout */
   margin-bottom: 50px;
 }
 
 .contact-content {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Allow items to wrap */
   gap: 50px;
   justify-content: center;
 }
 
 .contact-form {
-  flex: 2;
-  min-width: 300px;
+  flex: 2; /* Takes 2 parts of available space */
+  min-width: 300px; /* Ensures it doesn't get too small */
   background-color: white;
   padding: 40px;
   border-radius: 8px;
@@ -485,7 +486,7 @@ footer {
 
 .form-group input,
 .form-group textarea {
-  width: calc(100% - 20px);
+  width: calc(100% - 20px); /* Account for padding */
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -504,21 +505,21 @@ footer {
 
 .contact-form .primary-btn {
   width: auto;
-  display: block;
+  display: block; /* Make it a block element to center with margin auto */
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .contact-info {
-  flex: 1;
-  min-width: 250px;
+  flex: 1; /* Takes 1 part of available space */
+  min-width: 250px; /* Ensures it doesn't get too small */
   background-color: white;
   padding: 40px;
   border-radius: 8px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.1);
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Stack content vertically */
   justify-content: center;
 }
 
@@ -529,7 +530,7 @@ footer {
   margin-bottom: 25px;
   border-bottom: 2px solid #00bcd4;
   padding-bottom: 10px;
-  display: inline-block;
+  display: inline-block; /* To make border-bottom fit content width */
 }
 
 .contact-info p {
@@ -577,7 +578,7 @@ footer {
 
 /* --- MEDIA QUERIES FOR RESPONSIVENESS --- */
 
-/* Styles that apply when screen width is 768px or less */
+/* Styles that apply when screen width is 768px or less (Tablets & Mobile) */
 @media (max-width: 768px) {
   /* Header & Mobile Nav */
   .main-nav { /* This is the desktop nav */
@@ -589,96 +590,171 @@ footer {
   }
 
   .header-content {
-    /* Existing padding: 0 20px; remains, but you might want to adjust */
-    padding: 0 15px; /* Slightly less padding on smaller screens */
+    padding: 0 15px; /* Slightly less horizontal padding for smaller screens */
   }
 
   /* Hero Section */
   .hero-section {
-    padding: 40px 20px; /* Adjust top/bottom padding */
-    min-height: auto; /* Allow height to adjust */
-    padding-top: 5rem; /* Ensure space for fixed header on mobile too */
+    padding-left: 15px; /* Adjust horizontal padding for content */
+    padding-right: 15px;
+    padding-bottom: 40px; /* Ensure bottom padding */
+    min-height: auto; /* Allow height to adjust to content */
+    /* padding-top: 5rem; This is already handled for fixed header */
   }
   .hero-name {
-    font-size: 3em;
+    font-size: 2.8em; /* Adjusted font size for tablets/larger phones */
   }
   .hero-title {
-    font-size: 1.5em;
+    font-size: 1.5em; /* Adjusted font size */
   }
   .hero-description {
-    font-size: 1em;
+    font-size: 1em; /* Adjusted font size */
   }
   .hero-buttons {
     flex-direction: column; /* Stack buttons vertically */
-    gap: 15px;
+    gap: 15px; /* Adjust gap when stacked */
   }
   .btn { /* General button adjustments for mobile */
-    width: 80%; /* Make buttons take up more width */
+    width: 90%; /* Make buttons take up more width */
+    max-width: 350px; /* Limit max width */
     margin: 0 auto; /* Center them */
   }
 
-  /* Section Common */
+  /* Section Common Title */
   .section-title {
-    font-size: 2em;
+    font-size: 2em; /* Smaller section titles */
     margin-bottom: 30px;
+  }
+  .section-title::after {
+    width: 60px; /* Shorter underline */
   }
 
   /* About Section */
   .about-section {
-    padding: 50px 0;
+    padding: 50px 0; /* Reduced vertical padding */
   }
   .about-content {
     flex-direction: column; /* Stack content vertically */
-    text-align: center;
+    text-align: center; /* Center text for stacked content */
+    gap: 20px; /* Reduce gap */
   }
   .about-text {
-    min-width: unset; /* Remove min-width restriction */
+    min-width: unset; /* Remove min-width restriction, allow it to be flexible */
     width: 100%;
+    font-size: 1em; /* Adjust font size */
   }
 
   /* Skills Section */
   .skills-section {
-    padding: 50px 0;
+    padding: 50px 0; /* Reduced vertical padding */
   }
   .skills-grid {
-    grid-template-columns: 1fr; /* Stack skill cards */
+    grid-template-columns: 1fr; /* Stack skill cards into a single column */
+    gap: 20px; /* Reduce gap */
+  }
+  .skill-card h3 {
+    font-size: 1.4em; /* Adjust skill card title size */
+    margin-bottom: 15px;
+  }
+  .skill-card h3::after {
+    width: 40px; /* Shorter underline for skill card title */
+  }
+  .skill-card li {
+    font-size: 1em; /* Adjust skill list item font size */
   }
 
   /* Projects Section */
   .projects-section {
-    padding: 50px 0;
+    padding: 50px 0; /* Reduced vertical padding */
   }
   .projects-grid {
-    grid-template-columns: 1fr; /* Stack project cards */
+    grid-template-columns: 1fr; /* Stack project cards into a single column */
+    gap: 20px; /* Reduce gap */
   }
-  .project-btn { /* Ensure project buttons also adjust on mobile */
-    width: 80%;
-    margin: 0 auto;
+  .project-card .project-image {
+    height: 180px !important; /* Slightly smaller image height */
+  }
+  .project-info {
+    padding: 20px; /* Reduced padding inside project card */
+  }
+  .project-title {
+    font-size: 1.5em; /* Adjust project title size */
+  }
+  .project-description {
+    font-size: 0.95em; /* Adjust description size */
+  }
+  .project-techs {
+    gap: 6px; /* Smaller gap for tech pills */
+  }
+  .tech-pill {
+    padding: 4px 10px; /* Smaller tech pills */
+    font-size: 0.8em;
+  }
+  .project-links {
+    flex-direction: column; /* Stack project buttons */
+    gap: 10px;
+  }
+  .project-btn {
+    width: 90%; /* Make project buttons take up more width */
+    max-width: 250px; /* Limit max width */
+    margin: 0 auto; /* Center them */
+    padding: 8px 15px; /* Smaller padding */
+    font-size: 0.9em;
   }
 
   /* Contact Section */
   .contact-section {
-    padding: 50px 0;
+    padding: 50px 0; /* Reduced vertical padding */
+  }
+  .contact-intro {
+    font-size: 1em; /* Adjust intro text size */
+    margin-bottom: 30px;
   }
   .contact-content {
     flex-direction: column; /* Stack form and info vertically */
+    gap: 30px; /* Reduce gap */
   }
   .contact-form, .contact-info {
-    min-width: unset;
-    width: 100%;
+    min-width: unset; /* Remove min-width restriction */
+    width: 90%; /* Make them take up more width */
+    margin: 0 auto; /* Center them */
     padding: 30px; /* Slightly less padding inside */
   }
   .contact-info h3 {
-    text-align: center; /* Center contact details title */
+    font-size: 1.5em; /* Adjust contact info title size */
+    text-align: center; /* Center contact details title on mobile */
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+  }
+  .contact-info p {
+    font-size: 1em; /* Adjust contact info text size */
+    text-align: center; /* Center text */
+  }
+  .social-links {
+    margin-top: 20px;
+    gap: 15px; /* Reduce gap for social icons */
+  }
+  .social-icon {
+    font-size: 1em;
+    padding: 8px 12px;
   }
 }
 
-/* Optional: Further adjustments for very small screens (e.g., phones) */
+/* Optional: Further adjustments for very small screens (e.g., phones with width less than 480px) */
 @media (max-width: 480px) {
   .logo h1 {
     font-size: 1.5rem; /* Smaller logo */
   }
   .mobile-nav-links a {
     font-size: 1.6rem; /* Slightly smaller links in mobile menu */
+  }
+  .hero-name {
+    font-size: 2.2em; /* Even smaller name font size */
+  }
+  .hero-title {
+    font-size: 1.2em; /* Even smaller title font size */
+  }
+  .btn {
+    padding: 12px 25px; /* Slightly smaller padding for buttons */
   }
 }
