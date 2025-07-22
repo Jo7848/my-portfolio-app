@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects'; // Import the Projects component
+import Contact from './components/Contact';
 import './App.css';
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
         <About />
         <Skills />
         <Projects /> {/* Render the Projects component here */}
-        {/* Contact will go here later */}
+          <Contact />
       </main>
 
       <footer>
