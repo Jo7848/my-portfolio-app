@@ -52,9 +52,9 @@ function Projects() {
                 <h3 className="project-title">{project.title}</h3>
                 <p className="project-description">{project.description}</p>
                 <div className="project-techs">
-                  {project.techs.map((tech, index) => (
-                    <span key={index} className="tech-pill">{tech}</span>
-                  ))}
+                  { (project.techs ?? []).map((tech, index) => (
+                    <span key={index} className="tech-badge">{tech}</span>
+                     ))}
                 </div>
                 {/* Project Links Section */}
                 <div className="project-links">

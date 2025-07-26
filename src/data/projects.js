@@ -16,7 +16,7 @@ const projects = [
     image: "/images/portfolio-thumbnail.jpg", // Ensure this image exists in your public/images folder
     description: "This very website! A professional and responsive platform designed to showcase my web development skills and projects. Built with React for a dynamic user interface and modern development practices.",
     techs: ["React", "HTML", "CSS", "JavaScript", "Responsive Design", "Vite"],
-    liveLink: 'https://indiatsis-portfolio.vercel.app/', // Set to null as it only has a GitHub link
+    liveLink: 'https://indiatsis-portfolio.vercel.app/',
     githubLink: 'https://github.com/Jo7848/my-portfolio-app' // Updated GitHub link
   },
   // Add more projects here following the same structure!
